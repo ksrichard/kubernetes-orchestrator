@@ -6,6 +6,10 @@ It is using `Spring Boot` for the REST API and using an in-memory database (H2) 
 
 The application is using JWT as a security layer, by default a user is generated for the application: `admin/admin`
 
+By default the application is running on the port `8080`, but it can be changed in the `application.properties` file (`server.port` property), or using command-line parameter `-Dserver.port=9090` when running from JAR.
+
+All other configurations can be changed in `application.properties` like JWT options (`jwt.` prefix) or datasource options to change database (`spring.datasource.` prefix) etc...
+
 Requirements
 ---
 The project needs `Oracle JDK 8` and `Maven` installed to be able to run/build/test the project.
