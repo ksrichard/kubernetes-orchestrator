@@ -1,0 +1,14 @@
+<div class="container">
+
+  <form class="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus [(ngModel)]="model.username" #username="ngModel">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required [(ngModel)]="model.password" #password="ngModel">
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="loading" type="submit">Sign in</button>
+    <h3 *ngIf="error">{{error}}</h3>
+  </form>
+
+</div>
