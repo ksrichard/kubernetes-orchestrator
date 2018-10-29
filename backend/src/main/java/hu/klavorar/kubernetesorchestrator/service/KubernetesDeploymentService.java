@@ -105,7 +105,8 @@ public class KubernetesDeploymentService {
         DeploymentList deployments = kubernetesClient.apps().deployments().inAnyNamespace().list();
         if(deployments != null && deployments.getItems() != null) {
             List<Deployment> deploymentItems = deployments.getItems();
-            log.info("Successfully fetched deployments from Kubernetes! {}", deploymentItems);
+            log.debug("Successfully fetched deployments from Kubernetes! {}", deploymentItems);
+            log.info("Successfully fetched deployments from Kubernetes!");
             syncKubernetesDeploymentDetails(deploymentItems); // synchronizing database with result of kubernetes query
             return deploymentRepository.findAll(pageable);
         }
