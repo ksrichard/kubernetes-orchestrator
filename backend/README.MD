@@ -2,15 +2,33 @@ Kubernetes Orchestrator Backend API
 ---
 This application is designed to creating/listing kubernetes Deployments on any cluster configured.
 
+It is using `Spring Boot` for the REST API and using an in-memory database (H2) for storing Kubernetes deployment informations.
+
+The application is using JWT as a security layer, by default a user is generated for the application: `admin/admin`
+
 Requirements
 ---
 The project needs `Oracle JDK 8` and `Maven` installed to be able to run/build/test the project.
+
+Workflow
+---
+The application is designed to save all the listed Kubernetes Deployments.
+The workflow is the following:
+- When a request comes to list the Deployments of the configured Kubernetes cluster, the application will first request those type of resources from Kubernetes
+- Then synchronizing the result of Kubernetes query with the database of the application to make it up-to-date
+- Then returning the results from the freshly updated database with pagination 
 
 Kubernetes client configuration
 ---
 To configure a cluster you can have several options, that you can set in the `backend/src/main/resources/application.properties`
 
 All the properties with prefix `spring.cloud.kubernetes.client.` are about to configure the Kubernetes Client
+
+Of course these properties can be set using command-line options when running from jar:
+```bash
+mvn clean install package
+java -jar target/kubernetes-orchestrator-1.0.0-SNAPSHOT.jar -Dspring.cloud.kubernetes.client.master-url=https://localhost:6445 ...
+```
 
 Example configuration for a cluster:
 ```properties
