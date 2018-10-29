@@ -1,0 +1,1 @@
+insert into application_user(id, username, password) values(0, 'admin', '$2a$10$d9x/Duee.6KxVkPvGcwIw.IoUqb.BnDgIyy/4Kv62DTLE1Kjc7mku');
