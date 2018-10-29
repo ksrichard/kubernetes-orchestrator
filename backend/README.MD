@@ -10,13 +10,21 @@ Requirements
 ---
 The project needs `Oracle JDK 8` and `Maven` installed to be able to run/build/test the project.
 
-Workflow
+List Kubernetes Deployments workflow
 ---
-The application is designed to save all the listed Kubernetes Deployments.
+The application is designed to save all the listed Kubernetes Deployments in database.
 The workflow is the following:
 - When a request comes to list the Deployments of the configured Kubernetes cluster, the application will first request those type of resources from Kubernetes
 - Then synchronizing the result of Kubernetes query with the database of the application to make it up-to-date
-- Then returning the results from the freshly updated database with pagination 
+- Then returning the results from the freshly updated database with pagination
+
+Create/Update Kubernetes Deployments workflow
+---
+- When a request comes to create a Deployment, it goes through a validation phase
+- Then if the resource definition is valid, a namespace will be checked
+- If no explicit namespace was sent in a URL parameter, then it will be fetched from the resource definition
+- If the namespace does not exists, it will be created
+- Then the Deployment will be applied to the kubernetes cluster
 
 Kubernetes client configuration
 ---
