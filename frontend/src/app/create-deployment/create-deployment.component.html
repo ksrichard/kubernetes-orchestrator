@@ -1,0 +1,57 @@
+<app-simple-page>
+  <h3>Create Kubernetes Deployment</h3>
+
+  <br />
+
+  <!--Error-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="div-center">
+        <span *ngIf="error && !loading" class="error-msg">{{error}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!--Success-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="div-center">
+        <div *ngIf="successMessage && !loading" class="alert-success">{{successMessage}}</div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-12 div-center">
+      <h4>Create from text:</h4>
+      <textarea [(ngModel)]="plainTextDefinition" class="form-control plain-text-area" required></textarea>
+      <br />
+      <button class="btn btn-info" (click)="createFromPlainText()" [disabled]="loading">Create</button>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-12 div-center">
+      <h4 *ngIf="!loading">OR</h4>
+      <i *ngIf="loading" class="fa fa-spinner fa-spin loading-spinner"></i>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-12 div-center">
+      <h4>Create from file:</h4>
+      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <br /><br />
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="uploader.isUploading || !uploader.getNotUploadedItems().length || loading">
+        <span class="glyphicon glyphicon-upload"></span> Upload
+      </button>
+    </div>
+  </div>
+
+</app-simple-page>

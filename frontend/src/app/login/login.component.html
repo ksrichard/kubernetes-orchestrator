@@ -8,7 +8,11 @@
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required [(ngModel)]="model.password" #password="ngModel">
     <br />
     <button class="btn btn-lg btn-primary btn-block" [disabled]="loading" type="submit">Sign in</button>
-    <h3 *ngIf="error">{{error}}</h3>
+
+    <div class="div-center">
+      <span *ngIf="error && !loading" class="error-msg">{{error}}</span>
+      <i *ngIf="loading" class="fa fa-spinner fa-spin loading-spinner"></i>
+    </div>
   </form>
 
 </div>

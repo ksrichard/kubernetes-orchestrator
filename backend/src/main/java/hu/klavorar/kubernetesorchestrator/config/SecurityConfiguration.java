@@ -17,6 +17,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -26,6 +28,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtConfiguration jwtConfig;
+
+    @Autowired
+    private CorsConfig corsConfiguration;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -59,6 +64,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfig = new CorsConfiguration().applyPermitDefaultValues();
         corsConfig.addAllowedHeader("Authorization");
         corsConfig.addExposedHeader("Authorization");
+        corsConfig.setAllowedOrigins(corsConfiguration.getAllowedOrigins());
+        corsConfig.setAllowCredentials(Boolean.TRUE);
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
         return source;

@@ -1,0 +1,71 @@
+<app-simple-page>
+
+  <h3>Kubernetes Deployments</h3>
+
+  <!--Error-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="div-center">
+        <span *ngIf="error && !loading" class="error-msg">{{error}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!--Refresh button-->
+  <div class="row">
+    <div class="col-md-2">
+      <div class="pull-left">
+        <i *ngIf="loading" class="fa fa-spinner fa-spin loading-spinner"></i>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="pull-right">
+        <button class="btn btn-default" (click)="loadDeployments()">Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Namespace</th>
+          <th scope="col">Resource UID</th>
+          <th scope="col">Resource Version</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let deployment of deployments | paginate:{itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems}">
+          <th scope="row">{{deployment.id}}</th>
+          <td>{{deployment.name}}</td>
+          <td>{{deployment.namespace}}</td>
+          <td>{{deployment.resourceUid}}</td>
+          <td>{{deployment.resourceVersion}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <br />
+
+  <!--Pagination-->
+  <div class="row">
+    <div class="col-md-12 div-center">
+      <pagination-controls  [responsive]="true"
+                            [directionLinks]="true"
+                            (pageChange)="pageChanged($event)"
+                            previousLabel="Previous"
+                            nextLabel="Next">
+      </pagination-controls>
+    </div>
+  </div>
+
+</app-simple-page>

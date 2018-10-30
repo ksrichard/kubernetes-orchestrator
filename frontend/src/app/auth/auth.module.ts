@@ -1,22 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AUTH_TOKEN_NAME, AuthService} from './service/auth.service';
-import {JwtModule} from '@auth0/angular-jwt';
-import {HttpClientModule} from '@angular/common/http';
-
-export function tokenGetter() {
-  return sessionStorage.getItem(AUTH_TOKEN_NAME);
-}
+import {AuthService} from './service/auth.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter
-      }
-    })
+    CommonModule
   ],
   declarations: [],
   providers: [

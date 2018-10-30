@@ -1,0 +1,17 @@
+.loading-spinner {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.div-center {
+  text-align: center;
+}
+
+.error-msg {
+  font-size: 19px;
+  color: red;
+}
+
+.plain-text-area {
+  height: 300px;
+}

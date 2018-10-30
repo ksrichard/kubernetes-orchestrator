@@ -33,6 +33,10 @@ export class AuthService {
       );
   }
 
+  public getToken(): string {
+    return sessionStorage.getItem(AUTH_TOKEN_NAME);
+  }
+
   public logout(): void {
     // clear token remove user from local storage to log user out
     this.token = null;

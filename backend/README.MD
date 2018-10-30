@@ -13,6 +13,11 @@ All other configurations can be changed in `application.properties` like JWT opt
 Requirements
 ---
 The project needs `Oracle JDK 8` and `Maven` installed to be able to run/build/test the project.
+To use the project you have to configure the kubernetes client (see below) and make sure that the `cors.allowedOrigins` is set properly.
+This property's value must be set to the URL of frontend project. Example (_this is the default value_):
+```properties
+cors.allowedOrigins=http://localhost:4200
+```
 
 List Kubernetes Deployments workflow
 ---
