@@ -11,3 +11,7 @@ This project has 2 sub-projects:
 Running
 ---
 Please check `README.MD` files in both of the folders to be able to run both applications and use them
+
+Quick Design Schema
+---
+![Design Schema](design_schema.png)
