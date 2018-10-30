@@ -30,6 +30,8 @@ To install dependencies run `npm install` in the root of the frontend project di
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+After the dev server has been started you can login with credentials `admin`/`admin`.
+
 Build
 ---
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
