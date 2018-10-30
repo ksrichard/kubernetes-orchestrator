@@ -26,6 +26,7 @@
         <java-jwt.version>3.4.0</java-jwt.version>
         <kubernetes-client.version>4.1.0</kubernetes-client.version>
         <jacoco.version>0.8.2</jacoco.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
     </properties>
 
     <dependencies>
@@ -83,6 +84,18 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--Swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
         <!--Testing-->

@@ -37,6 +37,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()// allow login URL
                 .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()// allow actuator paths
+                .antMatchers("/v2/api-docs**").permitAll()// allow swagger-ui paths
+                .antMatchers("/swagger-ui.html**").permitAll()// allow swagger-ui paths
+                .antMatchers("/swagger-resources**").permitAll()// allow swagger-ui paths
+                .antMatchers("/swagger-resources/**").permitAll()// allow swagger-ui paths
+                .antMatchers("/webjars/**").permitAll()// allow webjars paths
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtConfig))

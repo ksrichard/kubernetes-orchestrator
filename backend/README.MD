@@ -105,3 +105,19 @@ You can import a test collection to Postman from the following URL:
 ```
 https://www.getpostman.com/collections/06199f9b2af213bb936e
 ```
+
+OR
+
+You can test APIs with built-in Swagger UI, to do this, start the application, then open up the following URL in your browser:
+```
+http://localhost:8080/swagger-ui.html
+```
+To test main API calls:
+
+- Click on `auth-controller` line, click on `Try it out`, replace username and password fields in JSON content with `admin`
+and click on `Execute` button at the bottom.
+- After getting back the answer you have to check the response headers and copy the full content of `Authorization` header (`Bearer ....`).
+- Scroll up on the page and click on `Authorize` button
+- paste the previously copied `Authorization` field value into `Value` input and press on the `Authorize` button
+
+From this point all of your queries will contain the needed JWT token to authenticate yourself, so feel free to try out any of the calls.
